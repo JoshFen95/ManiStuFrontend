@@ -1,0 +1,17 @@
+doctype html
+html
+    // My CSS //
+link(rel='stylesheet' href='/style.css')
+.wrapper
+    each student,i in students
+        div.editStudentDisplay
+            h2= student.name
+            each assessment,i in student.assessments
+                h3.subject=assessment.subject + ' Assessment'
+                p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
+                form.assessment(value = 'Lesson Rating ' + assessment.rating)
+                p= 'Assessment Comments:'
+                form.assessment(value=assessment.comments)
+                //- form(action="", method="get")
+                    //- button(id = 'delete' type='submit' formaction="../" + student._id + "/delete/" + assessment._id) Update
+                    //- button(id = 'edit' type='submit' formaction="../edit") Edit

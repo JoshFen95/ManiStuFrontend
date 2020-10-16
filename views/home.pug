@@ -1,0 +1,13 @@
+doctype html
+html
+    // My CSS //
+link(rel='stylesheet' href='/style.css')
+include navbar
+//- - const students = teacherObject.allStudents
+
+.wrapper
+    //- - const teacher = teacherObject.teacher
+    include teacherSection
+    
+    each student,i in students
+       include studentSection

@@ -1,0 +1,25 @@
+html
+script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+  // My CSS //
+link(rel='stylesheet' href='/style.css')
+include navbar
+
+.wrapper
+  .container
+    h1 Welcome to Mainstu
+    h2 If you are a teacher please sign in here
+    form.form(id = "form-login" action="/login" method="post" enctype='application/x-www-form-urlencoded')
+      input(id = 'teacherName' type='json' placeholder='Username' name='teacherName' )
+      input(type='password' placeholder='Password' name='password' )
+      button#login-button(type='submit') Login
+  ul.bg-bubbles
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li
