@@ -1,0 +1,20 @@
+doctype html
+html
+    // My CSS //
+link(rel='stylesheet' href='/style.css')
+include navbar
+
+.wrapper
+    include studentInfo
+
+    div.addStudentDisplay
+        form( action=`../assess/${student._id}/submit` method="post")
+            h4= 'Subject Lesson: '
+            input.rating( id = 'lesson' type='json', name='subject' value="")
+            h4= 'Name of Assessing Teacher: '
+            input.rating( id = 'teacherName' type='json', name='teacherName' value="")
+            h4= 'Lesson Rating: '
+            input.rating( id = 'rating' type='json', name='rating' value="")
+            h4= 'Assessment Comments:'
+            input.comments( id = 'comments' type='json', name='comments' value="")
+            button(id = 'add' type='submit' ) Submit

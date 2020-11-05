@@ -7,6 +7,7 @@ const logger = require("./utils/logger");
 const morgan = require('morgan');
 const override = require('method-override');
 const config = require("./config/config");
+const methodOverride = require('method-override');
 
 dotenv.config();
 
@@ -17,12 +18,14 @@ const viewRoutes = require("./routes/viewRoutes");
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use(override());
+// app.use(override());
+app.use(methodOverride('_method'));
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+
 
 //Route Handling
 app.use("/", viewRoutes);

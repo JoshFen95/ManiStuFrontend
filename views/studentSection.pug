@@ -1,12 +1,17 @@
 div.studentDisplay
     h2= student.name
+    form(action="", method="get")
+        button(id = 'add' type='submit' formaction=`../assess/${student._id}`) Add Assessment
     each assessment,i in student.assessments
-        h3.subject=assessment.subject + ' Assessment'
-        p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
-        p= 'Lesson Rating ' + assessment.rating
-        p= 'Assessment Comments:'
-        p.border= assessment.comments
-        form(action="", method="get")
-            //- button(id = 'delete' type='submit' formaction="../" + student._id + "/delete/" + assessment._id) Update
-            button(id = 'edit' type='submit' formaction="../student/edit") Edit
+        div.assessment
+            h3.subject=assessment.subject + ' Assessment'
+            p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
+            p= 'Lesson Rating: ' + assessment.rating
+            p= 'Assessment Comments:'
+            p.border= assessment.comments
+            form(action=`../edit/${student._id}`, method="get")
+                //- button(id = 'delete' type='submit' formaction="../" + student._id + "/delete/" + assessment._id) Update
+                button(id = 'edit' type='submit' ) Edit Assessment
+            form(action=`../delete/${student._id}/${assessment._id}`, method="get")
+                button(id = 'delete' type='submit') Delete Assessment
         
