@@ -1,0 +1,126 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+  link(rel='stylesheet' href='/style.css')
+  script(src='https://unpkg.com/swiper/swiper-bundle.js')
+  script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+  // Demo styles
+  style.
+    html,
+    body {
+    position: relative;
+    height: 100%;
+    }
+    body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    }
+    .swiper-container {
+    width: 50%;
+    height: 100%;
+    align-self: center;
+    padding-top:50px;
+    align-items:center;
+    }
+    .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    height: 75%;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 50px/50px;
+    top-padding: 10px;
+    bottom-padding: 10px;
+    
+    }
+    .swiper-container-v {
+    position: relative;
+    align-self: center;
+    top: 20px;
+    width: 500px
+    }
+
+
+
+
+.wrapper
+  include teacherSection    
+  // Swiper
+  .swiper-container.swiper-container-h
+      .swiper-wrapper
+        each student,i in students
+          .swiper-slide
+            include studentInfo
+              form(action="", method="get")
+                button(id = 'add' type='submit' formaction=`../assess/${student._id}`) Add Assessment
+              .swiper-container.swiper-container-v
+                .swiper-wrapper
+                  each assessment,i in student.assessments
+                    .swiper-slide
+                      div.this
+                        h2=assessment.subject + ' Assessment'
+                        p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
+                        p= 'Lesson Rating: ' + assessment.rating
+                        p= 'Assessment Comments:'
+                        .popup(onclick='myFunction()')
+                          | Click me to toggle the popup!
+                          span#myPopup.popuptext= assessment.comments
+                        p= assessment.comments
+                          form(action=`../edit/${student._id}`, method="get")
+                            button.edit(id = 'edit' type='submit' ) Edit
+                          form(action=`../delete/${student._id}/${assessment._id}`, method="get")
+                            button.delete(id = 'delete' type='submit') Delete
+                .swiper-pagination.swiper-pagination-v
+        // Add Pagination
+      .swiper-pagination.swiper-pagination-h
+// Swiper JS
+script(src='../package/swiper-bundle.min.js')
+// Initialize Swiper
+script.
+  var swiperH = new Swiper(".swiper-container-h", {
+  spaceBetween: 50,
+  pagination: {
+  el: ".swiper-pagination-h",
+  clickable: true,
+  },
+  });
+  var swiperV = new Swiper(".swiper-container-v", {
+  direction: "vertical",
+  slidesPerView: '1',
+  spaceBetween: 50,
+  navigation: {
+
+  },
+  mousewheel: true,
+  pagination: {
+  el: ".swiper-pagination-v",
+  clickable: true,
+  }
+  });
+
+script.
+  // When the user clicks on div, open the popup
+  function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+  }

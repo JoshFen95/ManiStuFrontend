@@ -2,7 +2,6 @@ const router = require('express').Router();
 const viewsController = require('./viewsController');
 
 router.get("/login", viewsController.login);
-// router.post("/login", viewsController.submitLogin, viewsController.destrutureAllStudentsPromise,viewsController.renderHome);
 router.post("/login", viewsController.submitLogin);
 
 router.get("/home" ,viewsController.getAllStudents,viewsController.renderHome);
@@ -13,6 +12,8 @@ router.get("/delete/:id/:assessmentId", viewsController.submitDelete);
 
 router.get("/assess/:id", viewsController.getStudentById, viewsController.renderAdd);
 router.post("/assess/:id/submit",  viewsController.submitAdd);
+
+router.get("/slide" ,viewsController.getAllStudents,viewsController.renderSlide);
 
 
 

@@ -1,5 +1,6 @@
 div.studentDisplay
-    h2= student.name
+    img.profilePic(src=(student.imageUrl), alt="Image Title")
+    h2= student.name 
     form(action="", method="get")
         button(id = 'add' type='submit' formaction=`../assess/${student._id}`) Add Assessment
     each assessment,i in student.assessments

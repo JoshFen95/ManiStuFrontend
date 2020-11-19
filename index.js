@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const override = require('method-override');
 const config = require("./config/config");
 const methodOverride = require('method-override');
-
+const alert = require("alert");
 dotenv.config();
 
 //Import Routes
@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Route Handling
 app.use("/", viewRoutes);
+
 
 app.use(function(err, req, res, next) {
   // if error thrown from jwt validation check
