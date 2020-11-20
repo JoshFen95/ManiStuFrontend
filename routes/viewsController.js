@@ -115,3 +115,13 @@ exports.renderSlide = async (req, res) => {
   const students = req.body.students;
   res.render("swiper", { teacher: teacher, students: students });
 };
+
+exports.renderSwiperEdit = async (req, res) => {
+  const student = req.body.student;
+  res.render("swiperEdit", { student: student });
+};
+
+exports.renderSwiperAdd = async (req, res) => {
+  const student = req.body.student;
+  res.render("addSwiper", { student: student });
+};

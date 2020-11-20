@@ -1,0 +1,88 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
+    link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+    link(rel='stylesheet' href='/style.css')
+    script(src='https://unpkg.com/swiper/swiper-bundle.js')
+    script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+    // Demo styles
+    style.
+        html,
+        body {
+        position: relative;
+        height: 100%;
+        }
+        body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+        }
+        .swiper-container {
+        width: 50%;
+        height: 100%;
+        align-self: center;
+        padding-top:50px;
+        align-items:center;
+        }
+        .swiper-slide.add {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        height: 95%;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        border-radius: 50px/50px;
+        }
+        .swiper-container-v {
+        position: relative;
+        align-self: center;
+        top: 0px;
+        width: 500px;
+        height: 400px;
+        }
+        .displayStudentInfoTHIS{
+        bottom: 230px;
+        }
+
+
+
+
+.wrapper
+    // Swiper
+    .swiper-container.swiper-container-h
+        .swiper-wrapper
+            .swiper-slide.add
+                include studentInfo
+                    div.addForm
+                        form( action=`../edit/${student._id}/submit` method="post")
+                            form( action=`../assess/${student._id}/submit` method="post")
+                                h4= 'Subject Lesson: '
+                                input.rating( id = 'lesson' type='json', name='subject' value="")
+                                h4= 'Name of Assessing Teacher: '
+                                input.rating( id = 'teacherName' type='json', name='teacherName' value="")
+                                h4= 'Lesson Rating: '
+                                input.rating( id = 'rating' type='json', name='rating' value="")
+                                h4= 'Assessment Comments:'
+                                input.comments( id = 'comments' type='json', name='comments' value="")
+                                button.submitAdd(id = 'add' type='submit' ) Submit
+
+
+
+

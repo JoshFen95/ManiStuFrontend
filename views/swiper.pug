@@ -34,7 +34,7 @@ head
     text-align: center;
     font-size: 18px;
     background: #fff;
-    height: 75%;
+    height: 90%;
     /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
@@ -49,52 +49,44 @@ head
     -webkit-align-items: center;
     align-items: center;
     border-radius: 50px/50px;
-    top-padding: 10px;
-    bottom-padding: 10px;
-    
     }
     .swiper-container-v {
     position: relative;
     align-self: center;
-    top: 20px;
-    width: 500px
+    top: 0px;
+    width: 500px;
+    height: 400px;
     }
-
-
 
 
 .wrapper
   include teacherSection    
   // Swiper
   .swiper-container.swiper-container-h
-      .swiper-wrapper
-        each student,i in students
-          .swiper-slide
-            include studentInfo
-              form(action="", method="get")
-                button(id = 'add' type='submit' formaction=`../assess/${student._id}`) Add Assessment
-              .swiper-container.swiper-container-v
-                .swiper-wrapper
-                  each assessment,i in student.assessments
-                    .swiper-slide
-                      div.this
-                        h2=assessment.subject + ' Assessment'
-                        p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
-                        p= 'Lesson Rating: ' + assessment.rating
-                        p= 'Assessment Comments:'
-                        .popup(onclick='myFunction()')
-                          | Click me to toggle the popup!
-                          span#myPopup.popuptext= assessment.comments
-                        p= assessment.comments
-                          form(action=`../edit/${student._id}`, method="get")
-                            button.edit(id = 'edit' type='submit' ) Edit
-                          form(action=`../delete/${student._id}/${assessment._id}`, method="get")
-                            button.delete(id = 'delete' type='submit') Delete
-                .swiper-pagination.swiper-pagination-v
-        // Add Pagination
-      .swiper-pagination.swiper-pagination-h
-// Swiper JS
-script(src='../package/swiper-bundle.min.js')
+    .swiper-wrapper
+      each student,i in students
+        .swiper-slide
+          include studentInfo
+            form(action="" method="get")
+              button(id = 'add' type='submit' formaction=`../slide/add/${student._id}`) Add Assessment
+            .swiper-container.swiper-container-v
+              .swiper-wrapper
+                each assessment,i in student.assessments
+                  .swiper-slide
+                    div.this
+                      h2=assessment.subject + ' Assessment'
+                      p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
+                      p= 'Lesson Rating: ' + assessment.rating
+                      p= 'Assessment Comments:'
+                      p.comments= (assessment.comments)
+                        form(action=`../slide/${student._id}`, method="get")
+                          button.edit(id = 'edit' type='submit' ) Edit
+                        form(action=`../delete/${student._id}/${assessment._id}`, method="get")
+                          button.delete(id = 'delete' type='submit') Delete
+              .swiper-pagination.swiper-pagination-v
+      // Add Pagination
+    .swiper-pagination.swiper-pagination-h
+
 // Initialize Swiper
 script.
   var swiperH = new Swiper(".swiper-container-h", {
@@ -107,7 +99,7 @@ script.
   var swiperV = new Swiper(".swiper-container-v", {
   direction: "vertical",
   slidesPerView: '1',
-  spaceBetween: 50,
+  spaceBetween: 1000,
   navigation: {
 
   },
@@ -118,9 +110,4 @@ script.
   }
   });
 
-script.
-  // When the user clicks on div, open the popup
-  function myFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-  }
+
