@@ -61,7 +61,7 @@ exports.getStudentById = (req, res, next) => {
 
 exports.renderEdit = async (req, res) => {
   const student = req.body.student;
-  res.render("editStudentSection", { student: student });
+  res.render("editSwiper", { student: student });
 };
 
 exports.submitEdit = (req, res, next) => {
@@ -81,7 +81,7 @@ exports.submitEdit = (req, res, next) => {
 
 exports.renderAdd = async (req, res) => {
   const student = req.body.student;
-  res.render("addAssessmentSection", { student: student });
+  res.render("addSwiper", { student: student });
 };
 
 exports.submitAdd = (req, res) => {
@@ -111,17 +111,17 @@ exports.submitDelete = (req, res) => {
     });
 };
 
-exports.renderSlide = async (req, res) => {
-  const students = req.body.students;
-  res.render("swiper", { teacher: teacher, students: students });
-};
+// exports.renderSlide = async (req, res) => {
+//   const students = req.body.students;
+//   res.render("swiper", { teacher: teacher, students: students });
+// };
 
-exports.renderSwiperEdit = async (req, res) => {
-  const student = req.body.student;
-  res.render("swiperEdit", { student: student });
-};
+// exports.renderSwiperEdit = async (req, res) => {
+//   const student = req.body.student;
+//   res.render("swiperEdit", { student: student });
+// };
 
-exports.renderSwiperAdd = async (req, res) => {
-  const student = req.body.student;
-  res.render("addSwiper", { student: student });
-};
+// exports.renderSwiperAdd = async (req, res) => {
+//   const student = req.body.student;
+//   res.render("addSwiper", { student: student });
+// };

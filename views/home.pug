@@ -1,13 +1,64 @@
 doctype html
-html
-    // My CSS //
-link(rel='stylesheet' href='/style.css')
-include navbar
-//- - const students = teacherObject.allStudents
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title ManiStu || Home
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+  link(rel='stylesheet' href='/style.css')
+  script(src='https://unpkg.com/swiper/swiper-bundle.js')
+  script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
 
 .wrapper
-    //- - const teacher = teacherObject.teacher
-    include teacherSection
-    
-    each student,i in students
-       include studentSection
+  include sidenav
+  include teacherSection
+  // Swiper
+  .swiper-container.swiper-container-h
+    .swiper-wrapper
+      each student,i in students
+        .swiper-slide
+          include studentInfo
+            form(action="" method="get")
+              button(id = 'add' type='submit' formaction=`../assess/${student._id}`) Add Assessment
+            .swiper-container.swiper-container-v
+              .swiper-wrapper
+                each assessment,i in student.assessments
+                  .swiper-slide
+                    div.this
+                      h2=assessment.subject + ' Assessment'
+                      p= 'Assessment created by ' + assessment.teacherName + ' on ' + assessment.date
+                      p= 'Lesson Rating: ' + assessment.rating
+                      p= 'Assessment Comments:'
+                      p.comments= (assessment.comments)
+                        form(action=`../edit/${student._id}`, method="get")
+                          button.edit(id = 'edit' type='submit' ) Edit
+                        form(action=`../delete/${student._id}/${assessment._id}`, method="get")
+                          button.delete(id = 'delete' type='submit') Delete
+              .swiper-pagination.swiper-pagination-v
+      // Add Pagination
+    .swiper-pagination.swiper-pagination-h
+
+// Initialize Swiper
+script.
+  var swiperH = new Swiper(".swiper-container-h", {
+  spaceBetween: 50,
+  pagination: {
+  el: ".swiper-pagination-h",
+  clickable: true,
+  },
+  });
+  var swiperV = new Swiper(".swiper-container-v", {
+  direction: "vertical",
+  slidesPerView: '1',
+  spaceBetween: 1000,
+  navigation: {
+
+  },
+  mousewheel: true,
+  pagination: {
+  el: ".swiper-pagination-v",
+  clickable: true,
+  }
+  });
+
+

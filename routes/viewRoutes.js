@@ -13,9 +13,9 @@ router.get("/delete/:id/:assessmentId", viewsController.submitDelete);
 router.get("/assess/:id", viewsController.getStudentById, viewsController.renderAdd);
 router.post("/assess/:id/submit",  viewsController.submitAdd);
 
-router.get("/slide" ,viewsController.getAllStudents,viewsController.renderSlide);
-router.get("/slide/:id", viewsController.getStudentById, viewsController.renderSwiperEdit);
-router.get("/slide/add/:id", viewsController.getStudentById, viewsController.renderSwiperAdd);
+// router.get("/slide" ,viewsController.getAllStudents,viewsController.renderSlide);
+// router.get("/slide/:id", viewsController.getStudentById, viewsController.renderSwiperEdit);
+// router.get("/slide/add/:id", viewsController.getStudentById, viewsController.renderSwiperAdd);
 
 
 
