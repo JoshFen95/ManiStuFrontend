@@ -60,9 +60,9 @@ head
   a(href='#') About
   a(href='#') PlaceHolder
   a(href='#') Contact
-  form.searchForm
-    input.inputSearch(type="text")
-    button.search Search
+  form.searchForm(action="../getStudent" method="get")
+    input.inputSearch(type="json" name="search")
+    button.search(type='submit') Search
 span(style='font-size:30px;cursor:pointer;' onclick='openNav()') &#x2630; ManiStu
 script.
   function openNav() {

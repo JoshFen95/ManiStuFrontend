@@ -59,6 +59,22 @@ exports.getStudentById = (req, res, next) => {
     });
 };
 
+exports.getStudentByName = (req, res, next) => {
+  const studentName = req.query.search;
+  console.log('StudentName');
+  console.log(studentName);
+  axios
+    .get(`http://localhost:8080/student/studentName/${studentName}`,{
+      headers: {
+        authorization: token,
+      },
+    })
+    .then((apiResponse) => {
+      req.body.student = apiResponse.data.student;
+      next();
+    });
+};
+
 exports.renderEdit = async (req, res) => {
   const student = req.body.student;
   res.render("editSwiper", { student: student });
@@ -110,6 +126,15 @@ exports.submitDelete = (req, res) => {
       res.redirect("../../home");
     });
 };
+
+exports.renderSingleStudent =  (req, res) => {
+  const student = req.body.student;
+  res.render("singleStudent", { student: student }); 
+}
+
+exports.renderAbout = (req, res) => {
+  res.render("about");
+}
 
 // exports.renderSlide = async (req, res) => {
 //   const students = req.body.students;

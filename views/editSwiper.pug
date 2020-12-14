@@ -29,7 +29,7 @@ head
                                             p= 'Lesson Rating: '
                                             input.rating( id = 'rating' type='json' name='rating' value=assessment.rating)
                                             p= 'Assessment Comments:'
-                                            textarea.comments( cols="55" rows="5" id = 'comments' type='json' name='comments' value=assessment.comments)
+                                            textarea.comments( cols="55" rows="5" id = 'comments' type='json' name='comments' value=assessment.comments)=assessment.comments
                                             button.submitEdit(id = 'edit' type='submit' ) Submit
                         .swiper-pagination.swiper-pagination-v
             // Add Pagination
