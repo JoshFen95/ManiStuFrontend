@@ -85,9 +85,11 @@ exports.submitEdit = (req, res, next) => {
   const assessmentId = req.params.assessmentId;
   axios
     .post(
-      `http://localhost:8080/student/${studentId}/${assessmentId}`,
-      req.body
-    )
+      `http://localhost:8080/student/${studentId}/${assessmentId}`, req.body,{
+        headers: {
+          authorization: token,
+        },
+      })
     .then((apiResponse) => {
       req.body.student = apiResponse.data;
       alert("The assessment data was successfully updated");
@@ -103,7 +105,11 @@ exports.renderAdd = async (req, res) => {
 exports.submitAdd = (req, res) => {
   const studentId = req.params.id;
   axios
-    .post(`http://localhost:8080/student/${studentId}/assess`, req.body)
+    .post(`http://localhost:8080/student/${studentId}/assess`, req.body,{
+      headers: {
+        authorization: token,
+      },
+    })
     .then((apiResponse) => {
       req.body.student = apiResponse.data;
       alert("The new assessment was successfully added");
@@ -119,7 +125,11 @@ exports.submitDelete = (req, res) => {
   const studentId = req.params.id;
   const assessmentId = req.params.assessmentId;
   axios
-    .delete(`http://localhost:8080/student/${studentId}/delete/${assessmentId}`)
+    .delete(`http://localhost:8080/student/${studentId}/delete/${assessmentId}`,{
+      headers: {
+        authorization: token,
+      },
+    })
     .then((apiResponse) => {
       req.body.student = apiResponse.data;
       alert("The assessment was successfully deleted");

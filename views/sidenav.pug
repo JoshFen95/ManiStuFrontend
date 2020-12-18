@@ -57,9 +57,8 @@ head
 #mySidenav.sidenav
   a.closebtn(href='javascript:void(0)' onclick='closeNav()') &times;
   a(href='/home') Home
-  a(href='#') About
-  a(href='#') PlaceHolder
-  a(href='#') Contact
+  a(href='/about') About
+  a(href='/contact') Contact
   form.searchForm(action="../getStudent" method="get")
     input.inputSearch(type="json" name="search")
     button.search(type='submit') Search

@@ -371,6 +371,9 @@ form button:hover {
   margin: 0 auto;
   margin-top: 75px;
 }
+.teacherDisplay{
+  font-size: 25px;
+}
 
 .studentDisplay,
 .editStudentDisplay,
@@ -427,6 +430,8 @@ input.comments:focus {
   background-color: rgba(255, 255, 255, 0.2);
   width: 100%;
   color: unset;
+
+
 }
 
 input.rating:focus {
@@ -546,12 +551,15 @@ button.submitAdd {
  .comments{ 
   overflow-y: scroll;
   height: 40%;
+  width: 100%;
   border-radius: 10px;
   padding: 5px;
   border-style: solid;
   border-color: #53e3a6;
   border-width: 1px;
   outline: none !important; 
+
+
 
 } 
 
@@ -586,6 +594,8 @@ padding: 0;
   align-self: center;
   padding-top:50px;
   align-items:center;
+  font-family: "Source Sans Pro";
+
   }
   .swiper-slide {
   text-align: center;
