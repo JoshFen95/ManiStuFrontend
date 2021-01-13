@@ -42,4 +42,8 @@ app.use(function(err, req, res, next) {
   res.status(500).send('Oops');
 });
 
+app.get('*', function(req, res){
+  res.render("404");
+});
+
 app.listen(config.port, () => logger.log(`Server is running on port ${config.port}`));

@@ -2,6 +2,7 @@ const logger = require("./logger")
 const alert = require("alert");
 
 exports.handleLoginError = (err) => {
+    console.log(err);
 
     if (err.response.status === 400) {
         alert("Please provide a username and password")

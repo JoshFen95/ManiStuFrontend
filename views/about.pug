@@ -1,29 +1,30 @@
-doctype html
+html
 head
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    title ManiStu || Edit Assessment
-    link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
-    link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+    title ManiStu || About
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js')
+      // My CSS //
     link(rel='stylesheet' href='/style.css')
-    script(src='https://unpkg.com/swiper/swiper-bundle.js')
-    script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
-
-
-
-
 
 .wrapper
-    include sidenav
-    .aboutBackground
-        .heading
-            h1 Welcome to ManiStu
-                .para
-                    p ManiStu is a tool designed for teachers to allow them to keep track of a student's behavior in lessons.
-                        .video
-                            iframe.embed-responsive-item(src="https://www.youtube.com/embed/Gb8hjlZtMIM",allowfullscreen='')
+  include sidenav
+  .container
+    h1 What is ManiStu
+    video(width='600' height="300" controls='')
+        source(src='mov_bbb.mp4' type='video/mp4')
+        |   Your browser does not support HTML video.
 
-
-
-
-// input.comments( id = 'comments' type='json' name='comments' value=assessment.comments)
+    form.form(id = "form-login" action="/login" method="post" enctype='application/x-www-form-urlencoded')
+      button#login-button(href='/home') Home
+  ul.bg-bubbles
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li
+    li

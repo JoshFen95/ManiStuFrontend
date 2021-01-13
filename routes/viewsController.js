@@ -22,7 +22,8 @@ exports.submitLogin = async (req, res, next) => {
       res.redirect("../home");
     })
     .catch((err) => {
-      errorHandler.handleLoginError(err);
+      // errorHandler.handleLoginError(err);
+      logger.error(err);
       res.redirect("../login");
     });
 };
